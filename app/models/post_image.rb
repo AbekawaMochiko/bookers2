@@ -7,6 +7,7 @@ class PostImage < ApplicationRecord
 
   validates :shop_name, presence: true
   validates :image, presence: true
+  validates :caption, presence: true
 
   def get_image
     unless image.attached?
