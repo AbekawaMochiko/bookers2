@@ -20,31 +20,61 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
+
             <li class="nav-item active">
-              <a class="nav-link" href="#">
-                <i class="fa-solid fa-house"></i>
-                Home 
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="home/about">
-                <i class="fa-solid fa-link"></i>
-                About
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/sign_up">
-                <i class="fa-solid fa-user-plus"></i>
-                Sign up
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/sign_in">
-                <i class="fa-solid fa-right-to-bracket"></i>
-                Log in
-              </a>
-            </li>
+            <%= link_to user_path(current_user), class:"nav-link" do %>
+              <i class="fa-solid fa-house"></i>
+              Home 
+              <span class="sr-only">(current)</span>
+            <% end %>
+          </li>
+          
+          <li class="nav-item">
+          <%= link_to users_path, class:"nav-link" do %>
+            <i class="fa-solid fa-users"></i>
+            Users
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to books_path, class:"nav-link" do %>
+            <i class="fa-solid fa-book-open"></i>
+            Books
+          <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Log out
+            <% end %>
+          </li>
+          <% else %>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">
+            <i class="fa-solid fa-house"></i>
+            Home 
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="home/about">
+            <i class="fa-solid fa-link"></i>
+            About
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_up">
+            <i class="fa-solid fa-user-plus"></i>
+            Sign up
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_in">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Log in
+          </a>
+        </li>
+        <% end %>
           </ul>
         </div>
       </nav>
